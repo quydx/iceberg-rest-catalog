@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
       target: prod
       args:
-        - BASE_IMAGE=python:3.11-slim
+        - BASE_IMAGE=python:3.12-slim
         - EXTRAS=postgres
     container_name: iceberg-rest
     environment:
@@ -21,13 +21,13 @@ services:
 
   postgres:
     image: postgres
-    container_name: postgres
+    container_name: postgres_db
     environment:
       - POSTGRES_DB=iceberg_db
       - POSTGRES_USER=pguser
       - POSTGRES_PASSWORD=password
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 

@@ -42,6 +42,8 @@ pytest = "7.4.4"
 pytest-icdiff = "^0.9"
 pytest-lazy-fixture = "0.6.3"
 ruff = "^0.4.8"
+fastavro = "^1.9.5"
+azure-storage-blob = "^12.21.0"
 
 [build-system]
 requires = ["poetry-core"]

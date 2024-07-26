@@ -10,6 +10,8 @@ ENV DEBIAN_FRONTEND=nonintercative
 # Install curl for healthcheck
 RUN apt-get update && apt-get install --no-install-recommends -y \
     curl \
+    libpq-dev \
+    gcc \
     && rm -rf /var/lib/apt/lists/*
 
 # Create iceberg user
@@ -40,6 +42,8 @@ RUN apt-get update \
     curl \
     libmariadb-dev-compat \
     libssl-dev \
+    libpq-dev \
+    gcc \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Poetry - respects $POETRY_VERSION & $POETRY_HOME
@@ -51,7 +55,7 @@ RUN curl -sSL https://install.python-poetry.org/ | python3
 ENV PATH="$POETRY_HOME/bin:$PATH"
 
 # Copy in the submodules
-COPY vendor/ vendor/
+#COPY vendor/ vendor/
 
 # Copy in the config files
 COPY pyproject.toml poetry.lock poetry.toml .gitmodules ./
